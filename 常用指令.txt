@@ -7,6 +7,4 @@ pip install tqdm
 pip install plotly
 pip install groq
 pip install -r Plaintext.txt  
-.\venv\Scripts\activate 進入環境
-where.exe python 查詢
 streamlit run test.py 執行程式
