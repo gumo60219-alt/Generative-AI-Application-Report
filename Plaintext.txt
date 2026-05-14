@@ -1,0 +1,6 @@
+streamlit
+yfinance
+FinMind
+tqdm
+plotly
+groq

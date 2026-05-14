@@ -1,0 +1,12 @@
+python -m venv venv
+pip install streamlit
+pip install yfinance
+pip install FinMind
+pip install tqdm
+pip install plotly
+pip install groq
+pip install -r requirements.txt  
+deactivate 退出環境
+.\venv\Scripts\activate 進入環境
+where.exe python 查詢
+streamlit run test.py 執行程式
