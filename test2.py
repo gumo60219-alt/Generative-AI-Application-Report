@@ -95,10 +95,22 @@ st.markdown("---")
 # --- 5. 主頁面佈局 ---
 col_main, col_side = st.columns([2, 1])
 
+# --- 修改後的程式碼 ---
 with col_main:
     st.subheader(f"📈 {selected_stock} 歷史走勢")
     if not stock_df.empty:
+        # 1. 轉回普通欄位
         plot_df = stock_df.reset_index()
+        
+        # 2. 自動偵測時間欄位並統一命名為 'Date' (解決大小寫或名稱不符問題)
+        if 'Date' not in plot_df.columns:
+            # 找找看有沒有小寫的 'date'，有就換掉
+            if 'date' in plot_df.columns:
+                plot_df = plot_df.rename(columns={'date': 'Date'})
+            else:
+                # 如果連小寫都沒有，通常第一個欄位就是時間索引轉過來的
+                plot_df = plot_df.rename(columns={plot_df.columns[0]: 'Date'})
+                
         fig = go.Figure()
         # 股價線
         fig.add_trace(go.Scatter(x=plot_df['Date'], y=plot_df['Close'], mode='lines', name='收盤價',
